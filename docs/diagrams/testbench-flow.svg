@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1020" viewBox="0 0 1000 1020" role="img" aria-labelledby="title desc">
+  <title id="title">SRAM testbench flow</title>
+  <desc id="desc">The testbench initializes the design, writes eight words, waits two cycles, reads each word, compares it with expected data, tracks errors, prints a summary, and finishes.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#436477"/></marker>
+    <style>
+      text { font-family: Segoe UI, Arial, sans-serif; fill: #183247; }
+      .title { font-size: 23px; font-weight: 700; }
+      .node { fill: #ffffff; stroke: #66869a; stroke-width: 2; }
+      .action { fill: #eaf3f6; stroke: #66869a; stroke-width: 2; }
+      .decision { fill: #fff3dc; stroke: #d6a24c; stroke-width: 2; }
+      .label { font-size: 16px; font-weight: 600; text-anchor: middle; }
+      .small { font-size: 13px; fill: #516b7b; text-anchor: middle; }
+      .wire { fill: none; stroke: #436477; stroke-width: 2.2; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1000" height="960" rx="16" fill="#f4f8fb"/>
+  <text class="title" x="55" y="55">TESTBENCH FLOW | WRITE, READ, VERIFY</text>
+
+  <ellipse class="node" cx="530" cy="105" rx="80" ry="34"/>
+  <text class="label" x="530" y="111">Start</text>
+
+  <rect class="action" x="360" y="165" width="340" height="68" rx="10"/>
+  <text class="label" x="530" y="194">Initialize inputs</text>
+  <text class="small" x="530" y="216">Set error count to zero</text>
+
+  <rect class="action" x="340" y="270" width="380" height="76" rx="10"/>
+  <text class="label" x="530" y="301">Write 8 test words</text>
+  <text class="small" x="530" y="325">Scattered addresses, unique data patterns</text>
+
+  <rect class="action" x="385" y="383" width="290" height="64" rx="10"/>
+  <text class="label" x="530" y="421">Wait 2 clock cycles</text>
+
+  <rect class="action" x="385" y="484" width="290" height="68" rx="10"/>
+  <text class="label" x="530" y="513">Read next address</text>
+  <text class="small" x="530" y="536">Capture registered dout</text>
+
+  <path class="decision" d="M530 575 L635 630 L530 685 L425 630 Z"/>
+  <text class="label" x="530" y="626">Data matches</text>
+  <text class="small" x="530" y="648">expected word?</text>
+
+  <rect class="action" x="740" y="595" width="205" height="70" rx="10"/>
+  <text class="label" x="842" y="624">Increment</text>
+  <text class="small" x="842" y="648">errors</text>
+
+  <path class="decision" d="M530 715 L645 775 L530 835 L415 775 Z"/>
+  <text class="label" x="530" y="771">More test</text>
+  <text class="small" x="530" y="794">addresses?</text>
+
+  <rect class="action" x="370" y="865" width="320" height="58" rx="10"/>
+  <text class="label" x="530" y="901">Print pass/fail summary</text>
+
+  <ellipse class="node" cx="530" cy="972" rx="58" ry="24"/>
+  <text class="label" x="530" y="978" font-size="14">Finish</text>
+
+  <path class="wire" d="M530 139 V165"/>
+  <path class="wire" d="M530 233 V270"/>
+  <path class="wire" d="M530 346 V383"/>
+  <path class="wire" d="M530 447 V484"/>
+  <path class="wire" d="M530 552 V575"/>
+  <path class="wire" d="M635 630 H740"/>
+  <text class="small" x="685" y="615">No</text>
+  <path class="wire" d="M530 685 V715"/>
+  <text class="small" x="555" y="706">Yes</text>
+  <path class="wire" d="M842 665 V775 H645"/>
+  <path class="wire" d="M415 775 H220 V518 H385"/>
+  <text class="small" x="275" y="757">Yes</text>
+  <path class="wire" d="M530 835 V865"/>
+  <text class="small" x="555" y="855">No</text>
+  <path class="wire" d="M530 923 V948"/>
+</svg>

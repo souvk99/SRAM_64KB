@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520" role="img" aria-labelledby="title desc">
+  <title id="title">SRAM 64 KiB top-level architecture</title>
+  <desc id="desc">The testbench drives clock, chip select, write enable, address, and input data to the SRAM. The SRAM control accesses a 16,384 by 32-bit memory and returns registered output data.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#436477"/></marker>
+    <style>
+      text { font-family: Segoe UI, Arial, sans-serif; fill: #183247; }
+      .title { font-size: 23px; font-weight: 700; }
+      .label { font-size: 15px; font-weight: 600; }
+      .body { font-size: 14px; }
+      .small { font-size: 12px; fill: #516b7b; }
+      .wire { fill: none; stroke: #436477; stroke-width: 2.4; marker-end: url(#arrow); }
+      .dash { stroke-dasharray: 7 6; }
+    </style>
+  </defs>
+  <rect width="1100" height="520" rx="16" fill="#f4f8fb"/>
+  <text class="title" x="55" y="55">64 KiB SRAM | TOP-LEVEL ARCHITECTURE</text>
+  <text class="small" x="55" y="82">Single port · synchronous read and write · 32-bit words</text>
+
+  <rect x="55" y="180" width="250" height="220" rx="12" fill="#173b57"/>
+  <text x="180" y="218" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">Testbench</text>
+  <line x1="78" y1="236" x2="282" y2="236" stroke="#7190a3"/>
+  <text x="180" y="267" text-anchor="middle" class="body" fill="#ffffff">Clock and stimulus</text>
+  <text x="180" y="292" text-anchor="middle" class="body" fill="#ffffff">Write/read verification</text>
+  <text x="180" y="317" text-anchor="middle" class="body" fill="#ffffff">VCD waveform dump</text>
+  <text x="180" y="370" text-anchor="middle" class="small" fill="#c8d8e3">tb_sram_64kb</text>
+
+  <rect x="365" y="120" width="680" height="345" rx="14" fill="#ffffff" stroke="#5b8d87" stroke-width="2.5"/>
+  <text x="395" y="158" class="label" fill="#28645d">sram_64kb</text>
+  <text x="1015" y="158" text-anchor="end" class="small">Behavioral RTL</text>
+
+  <rect x="410" y="210" width="220" height="135" rx="10" fill="#e6f3f0" stroke="#78aaa1" stroke-width="1.5"/>
+  <text x="520" y="246" text-anchor="middle" class="label">Synchronous control</text>
+  <text x="520" y="272" text-anchor="middle" class="body">Sample on rising edge</text>
+  <text x="520" y="298" text-anchor="middle" class="body">Decode cs and we</text>
+  <text x="520" y="324" text-anchor="middle" class="small">Address: 14 bits</text>
+
+  <rect x="720" y="190" width="275" height="110" rx="10" fill="#eaf0f8" stroke="#8299b6" stroke-width="1.5"/>
+  <text x="857" y="229" text-anchor="middle" class="label">Memory array</text>
+  <text x="857" y="255" text-anchor="middle" class="body">16,384 x 32 bits</text>
+  <text x="857" y="279" text-anchor="middle" class="small">64 KiB total capacity</text>
+
+  <rect x="720" y="335" width="275" height="72" rx="10" fill="#fff3dc" stroke="#d6a24c" stroke-width="1.5"/>
+  <text x="857" y="365" text-anchor="middle" class="label">Registered output</text>
+  <text x="857" y="389" text-anchor="middle" class="body">dout[31:0]</text>
+
+  <path class="wire" d="M305 250 H410"/>
+  <rect x="306" y="190" width="105" height="48" rx="6" fill="#f4f8fb"/>
+  <text x="358" y="208" text-anchor="middle" class="small">clk, cs, we</text>
+  <text x="358" y="226" text-anchor="middle" class="small">addr, din</text>
+
+  <path class="wire" d="M630 250 H720"/>
+  <text x="675" y="234" text-anchor="middle" class="small">write data</text>
+  <path class="wire" d="M857 300 V335"/>
+  <text x="874" y="322" class="small">read word</text>
+
+  <path class="wire" d="M720 375 H340 V360 H305"/>
+  <rect x="445" y="385" width="150" height="35" rx="6" fill="#ffffff"/>
+  <text x="520" y="408" text-anchor="middle" class="small">dout[31:0]</text>
+
+  <text x="395" y="445" class="small">Write: cs=1, we=1</text>
+  <text x="610" y="445" class="small">Read: cs=1, we=0</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+  <title id="title">SRAM operation state diagram</title>
+  <desc id="desc">A conceptual state diagram showing idle, write, and read operations selected from chip select and write enable at each rising edge. It is not a separately registered FSM.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#436477"/></marker>
+    <style>
+      text { font-family: Segoe UI, Arial, sans-serif; fill: #183247; }
+      .title { font-size: 23px; font-weight: 700; }
+      .state { stroke-width: 2.4; }
+      .name { font-size: 20px; font-weight: 700; text-anchor: middle; }
+      .detail { font-size: 14px; text-anchor: middle; fill: #516b7b; }
+      .edge { fill: none; stroke: #436477; stroke-width: 2.3; marker-end: url(#arrow); }
+      .edge-label { font-size: 13px; font-weight: 600; text-anchor: middle; fill: #35566a; }
+      .note { font-size: 14px; fill: #516b7b; }
+    </style>
+  </defs>
+  <rect width="1200" height="650" rx="16" fill="#f4f8fb"/>
+  <text class="title" x="55" y="55">OPERATION STATE | CONTROL SAMPLED ON clk RISING EDGE</text>
+  <text class="note" x="55" y="84">Conceptual operation states only; the RTL does not contain a separately registered FSM.</text>
+
+  <rect class="state" x="80" y="270" width="230" height="130" rx="18" fill="#eaf0f8" stroke="#8299b6"/>
+  <text class="name" x="195" y="318">IDLE</text>
+  <text class="detail" x="195" y="347">cs = 0</text>
+  <text class="detail" x="195" y="372">No access; dout holds</text>
+
+  <rect class="state" x="485" y="180" width="245" height="140" rx="18" fill="#e6f3f0" stroke="#78aaa1"/>
+  <text class="name" x="607" y="230">WRITE</text>
+  <text class="detail" x="607" y="260">cs = 1 and we = 1</text>
+  <text class="detail" x="607" y="287">mem[addr] receives din</text>
+
+  <rect class="state" x="890" y="270" width="230" height="130" rx="18" fill="#fff3dc" stroke="#d6a24c"/>
+  <text class="name" x="1005" y="318">READ</text>
+  <text class="detail" x="1005" y="347">cs = 1 and we = 0</text>
+  <text class="detail" x="1005" y="372">dout receives mem[addr]</text>
+
+  <path class="edge" d="M310 295 C365 260 425 230 485 230"/>
+  <text class="edge-label" x="395" y="244">posedge · cs=1, we=1</text>
+
+  <path class="edge" d="M730 245 C785 255 835 285 890 305"/>
+  <text class="edge-label" x="809" y="250">posedge · cs=1, we=0</text>
+
+  <path class="edge" d="M300 270 C440 105 755 95 918 270"/>
+  <text class="edge-label" x="610" y="118">posedge · cs=1, we=0</text>
+
+  <path class="edge" d="M890 360 C830 430 785 460 730 285"/>
+  <text class="edge-label" x="815" y="428">posedge · cs=1, we=1</text>
+
+  <path class="edge" d="M500 320 C445 440 365 450 290 400"/>
+  <text class="edge-label" x="405" y="430">posedge · cs=0</text>
+
+  <path class="edge" d="M950 400 C900 520 300 540 225 400"/>
+  <text class="edge-label" x="590" y="522">posedge · cs=0</text>
+
+  <path class="edge" d="M145 270 C105 210 245 190 245 270"/>
+  <text class="edge-label" x="194" y="205">cs=0</text>
+
+  <path class="edge" d="M550 180 C510 120 690 110 665 180"/>
+  <text class="edge-label" x="607" y="135">cs=1, we=1</text>
+
+  <path class="edge" d="M960 270 C920 210 1080 190 1075 270"/>
+  <text class="edge-label" x="1000" y="205">cs=1, we=0</text>
+</svg>

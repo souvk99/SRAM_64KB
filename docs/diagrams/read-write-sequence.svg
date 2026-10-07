@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="820" viewBox="0 0 1120 820" role="img" aria-labelledby="title desc">
+  <title id="title">SRAM read and write sequence diagram</title>
+  <desc id="desc">A sequence diagram showing the testbench presenting write controls before a rising clock edge, followed by a read request and registered data returned by the SRAM.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#436477"/></marker>
+    <style>
+      text { font-family: Segoe UI, Arial, sans-serif; fill: #183247; }
+      .title { font-size: 23px; font-weight: 700; }
+      .participant { fill: #ffffff; stroke: #66869a; stroke-width: 2; }
+      .participant-text { font-size: 15px; font-weight: 700; text-anchor: middle; }
+      .life { stroke: #9aafbd; stroke-width: 1.6; stroke-dasharray: 7 7; }
+      .msg { fill: none; stroke: #436477; stroke-width: 2.2; marker-end: url(#arrow); }
+      .return { fill: none; stroke: #5b8d87; stroke-width: 2.2; stroke-dasharray: 7 5; marker-end: url(#arrow); }
+      .label { font-size: 14px; font-weight: 600; text-anchor: middle; }
+      .phase { font-size: 13px; font-weight: 700; fill: #28645d; }
+      .tick { stroke: #d6a24c; stroke-width: 2.5; }
+      .note { font-size: 13px; fill: #516b7b; }
+    </style>
+  </defs>
+  <rect width="1120" height="820" rx="16" fill="#f4f8fb"/>
+  <text class="title" x="55" y="55">SINGLE-PORT SRAM | READ/WRITE SEQUENCE</text>
+
+  <rect class="participant" x="55" y="95" width="190" height="60" rx="9"/>
+  <text class="participant-text" x="150" y="132">Testbench</text>
+  <rect class="participant" x="320" y="95" width="170" height="60" rx="9"/>
+  <text class="participant-text" x="405" y="132">Clock</text>
+  <rect class="participant" x="565" y="95" width="210" height="60" rx="9"/>
+  <text class="participant-text" x="670" y="132">sram_64kb</text>
+  <rect class="participant" x="850" y="95" width="220" height="60" rx="9"/>
+  <text class="participant-text" x="960" y="132">Memory array</text>
+
+  <line class="life" x1="150" y1="155" x2="150" y2="770"/>
+  <line class="life" x1="405" y1="155" x2="405" y2="770"/>
+  <line class="life" x1="670" y1="155" x2="670" y2="770"/>
+  <line class="life" x1="960" y1="155" x2="960" y2="770"/>
+
+  <text class="phase" x="55" y="195">WRITE</text>
+  <path class="msg" d="M150 225 H670"/>
+  <text class="label" x="410" y="215">Set cs=1, we=1, addr, din</text>
+  <line class="tick" x1="660" y1="245" x2="680" y2="245"/>
+  <path class="msg" d="M405 275 H670"/>
+  <text class="label" x="535" y="265">Rising clock edge</text>
+  <path class="msg" d="M670 325 H960"/>
+  <text class="label" x="815" y="315">Store din at mem[addr]</text>
+
+  <line x1="55" y1="375" x2="1070" y2="375" stroke="#cfdae2" stroke-width="1.5"/>
+  <text class="phase" x="55" y="410">READ</text>
+  <path class="msg" d="M150 445 H670"/>
+  <text class="label" x="410" y="435">Set cs=1, we=0, addr</text>
+  <line class="tick" x1="660" y1="465" x2="680" y2="465"/>
+  <path class="msg" d="M405 495 H670"/>
+  <text class="label" x="535" y="485">Rising clock edge</text>
+  <path class="msg" d="M670 545 H960"/>
+  <text class="label" x="815" y="535">Read mem[addr]</text>
+  <path class="return" d="M960 595 H670"/>
+  <text class="label" x="815" y="585">Return stored word</text>
+  <line class="tick" x1="660" y1="615" x2="680" y2="615"/>
+  <path class="return" d="M670 655 H150"/>
+  <text class="label" x="410" y="645">Update registered dout</text>
+  <path class="msg" d="M150 715 H225 V745 H150"/>
+  <text class="label" x="285" y="736">Compare against expected data</text>
+
+  <text class="note" x="55" y="790">The SRAM samples controls on rising edges. Read data is registered; the testbench checks it on the following cycle.</text>
+</svg>

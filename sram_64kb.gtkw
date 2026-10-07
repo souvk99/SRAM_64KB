@@ -1,0 +1,21 @@
+[*]
+[*] GTKWave Analyzer v3.3.127
+[dumpfile] "sram_64kb.vcd"
+[savefile] "sram_64kb.gtkw"
+[timestart] 0
+[size] 1600 900
+[pos] -1 -1
+[treeopen] tb_sram_64kb.
+[sst_width] 250
+[signals_width] 320
+[sst_expanded] 1
+[sst_vpaned_height] 300
+@28
+tb_sram_64kb.clk
+tb_sram_64kb.cs
+tb_sram_64kb.we
+@29
+tb_sram_64kb.addr[13:0]
+tb_sram_64kb.din[31:0]
+tb_sram_64kb.dout[31:0]
+tb_sram_64kb.rd_data[31:0]

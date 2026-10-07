@@ -1,0 +1,18 @@
+# Vivado-generated project state and run products
+.Xil/
+SRAM_64KB.cache/
+SRAM_64KB.gen/
+SRAM_64KB.hw/
+SRAM_64KB.ip_user_files/
+SRAM_64KB.runs/
+SRAM_64KB.sim/
+SRAM_64KB.srcs/
+*.jou
+*.log
+*.str
+
+# Local simulator outputs
+*.vvp
+*.vcd
+*.wdb
+*.wcfg
