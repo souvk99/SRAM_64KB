@@ -84,7 +84,7 @@
         </FileInfo>
       </File>
       <Config>
-        <Option Name="DesignMode" Val="GateLvl"/>
+        <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="sram_64kb"/>
       </Config>
     </FileSet>
@@ -98,8 +98,6 @@
       <Filter Type="Srcs"/>
       <File Path="$PPRDIR/tb_sram_64kb.v">
         <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
